@@ -6,9 +6,6 @@ const count = document.querySelector(".count");
 count.textContent = "Счёт: " + (+range.value).toFixed(0);
 
 range.style.width = rangeBlock.clientHeight - 60 + "px";
-window.onresize = () => {
-  range.style.width = rangeBlock.clientHeight - 60 + "px";
-};
 
 range.addEventListener("input", () => {
   count.textContent = "Счёт: " + (+range.value).toFixed(0);
@@ -23,4 +20,5 @@ window.addEventListener("resize", () => {
   // We execute the same script as before
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
+  range.style.width = rangeBlock.clientHeight - 60 + "px";
 });
