@@ -1,3 +1,4 @@
+const body = document.querySelector("body");
 const range = document.querySelector(".range");
 const gameSection = document.querySelector(".gameSection");
 
