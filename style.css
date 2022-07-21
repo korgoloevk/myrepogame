@@ -1,7 +1,6 @@
 * {
     padding: 0;
     margin: 0;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -25,11 +24,7 @@ body {
     width: 100%;
     height: 100%;
     /* background-color: blue; */
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -37,25 +32,25 @@ body {
     width: 80%;
     height: 100%;
     /* background-color: rgb(207, 82, 82); */
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
     position: relative;
 }
 
 .rangeBlock {
-    width: 50px;
     height: 80%;
     /* background-color: rgb(197, 74, 141); */
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     align-self: center;
-    flex-direction: column;
-    align-items: center;
     position: relative;
-    justify-self: flex-end;
+}
+
+.count {
+    /* flex: 1 1 auto; */
+    margin-right: 20px;
+    /* align-self: center; */
+    font-size: 26px;
+    font-weight: 600;
 }
 
 .number {
@@ -71,19 +66,13 @@ body {
     /* -ms-grid-column-align: center; */
     /* justify-self: center; */
     width: 20px;
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     overflow: hidden;
 }
 
 .range {
     position: relative;
-    -webkit-transform-origin: top left;
-    -ms-transform-origin: top left;
     transform-origin: top left;
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     height: 20px;
     width: 500px;
@@ -136,13 +125,7 @@ body {
     /* background-color: chartreuse; */
 }
 
-.count {
-    /* flex: 1 1 auto; */
-    width: 200px;
-    align-self: center;
-    font-size: 26px;
-    font-weight: 600;
-}
+
 
 .info {
     justify-self: flex-start;
