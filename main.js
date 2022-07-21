@@ -3,8 +3,7 @@ const range = document.querySelector(".range");
 const gameSection = document.querySelector(".gameSection");
 
 range.style.width = gameSection.clientHeight - 60 + "px";
-
-window.onresize = () => {
+body.style.height = window.onresize = () => {
   range.style.width = gameSection.clientHeight - 60 + "px";
 };
 
