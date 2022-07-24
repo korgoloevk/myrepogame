@@ -1,19 +1,39 @@
-const body = document.querySelector("body");
 const range = document.querySelector(".range");
-const gameSection = document.querySelector(".gameSection");
-const rangeBlock = document.querySelector(".rangeBlock");
-const count = document.querySelector(".count");
-count.textContent = "Счёт: " + (+range.value).toFixed(0);
+const btn = document.querySelector(".btn");
+range.addEventListener("input", rangeChange);
+btn.addEventListener("click", yearSelect);
+let currentValue = +range.value;
 
-range.style.width = rangeBlock.clientHeight - 60 + "px";
+function rangeChange() {
+  document.querySelector(".btn_count").textContent = (+this.value).toFixed(0);
+  currentValue = (+this.value).toFixed(0);
+}
 
-range.addEventListener("input", () => {
-  count.textContent = "Счёт: " + (+range.value).toFixed(0);
-});
+function yearSelect() {
+  const goodChoice = 1653;
+  const userChoice = Math.abs(currentValue - goodChoice);
+  if (userChoice < 10) {
+    setBtnColor(0);
+    console.log("<10");
+  } else if (userChoice < 20) {
+    setBtnColor(1);
+    console.log("<20");
+  } else if (userChoice < 30) {
+    setBtnColor(2);
+    console.log("<30");
+  } else {
+    setBtnColor(3);
+    console.log("else");
+  }
+}
 
-console.log(gameSection.clientHeight);
+const colors = [
+  "rgba(78, 189, 74, 0.719)",
+  "rgba(177, 189, 74, 0.719)",
+  "rgba(189, 126, 74, 0.733)",
+  "rgba(189, 74, 74, 0.733)",
+];
 
-let vh = window.innerHeight * 0.01;
-window.addEventListener("resize", () => {
-  range.style.width = rangeBlock.clientHeight - 60 + "px";
-});
+function setBtnColor(num) {
+  btn.style.backgroundColor = colors[num];
+}
