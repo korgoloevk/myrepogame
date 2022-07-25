@@ -5,10 +5,14 @@ const modal = document.querySelector(".modal");
 let modalShow = false;
 
 range.addEventListener("input", rangeChange);
-btn.addEventListener("click", yearSelect);
+btn.addEventListener("click", () => {
+  yearSelect("testSystem");
+});
 
-window.addEventListener("click", (e) => {
+document.addEventListener("click", (e) => {
   if (modalShow && !e.target.classList.contains("modal")) {
+    e.stopPropagation();
+    e.preventDefault();
     return false;
   } else {
     modal.classList.add("hidden");
@@ -21,16 +25,17 @@ function rangeChange() {
   currentValue = (+this.value).toFixed(0);
 }
 
-function yearSelect() {
+function yearSelect(style) {
   const goodChoice = 1693;
   const userChoice = Math.abs(currentValue - goodChoice);
-  if (userChoice < 10) {
+  //   calculateRange(userChoice);
+  if (userChoice < 5) {
     setBtnColor(0);
-    console.log("<10");
-  } else if (userChoice < 20) {
+    console.log("<5");
+  } else if (userChoice < 30) {
     setBtnColor(1);
     console.log("<20");
-  } else if (userChoice < 30) {
+  } else if (userChoice < 50) {
     setBtnColor(2);
     console.log("<30");
   } else {
@@ -38,9 +43,8 @@ function yearSelect() {
     console.log("else");
   }
 
-  range.classList.add("testSystem");
-  modal.classList.remove("hidden");
-  modalShow = true;
+  range.classList.add(style);
+  modalWork();
 }
 
 const colors = [
@@ -52,4 +56,16 @@ const colors = [
 
 function setBtnColor(num) {
   btn.style.backgroundColor = colors[num];
+}
+
+function modalWork() {
+  modal.classList.remove("hidden");
+  modalShow = true;
+}
+
+function calculateRange(userChoice) {
+  const goodChoice = 1693;
+  const min = range.getAttribute("min");
+  const max = range.getAttribute("max");
+  const differenct = max - min;
 }
