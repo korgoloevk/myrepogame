@@ -1,10 +1,20 @@
 const range = document.querySelector(".range");
 const btn = document.querySelector(".btn");
-range.addEventListener("input", rangeChange);
-btn.addEventListener("click", yearSelect);
 let currentValue = +range.value;
 const modal = document.querySelector(".modal");
 let modalShow = false;
+
+range.addEventListener("input", rangeChange);
+btn.addEventListener("click", yearSelect);
+
+window.addEventListener("click", (e) => {
+  if (modalShow && !e.target.classList.contains("modal")) {
+    return false;
+  } else {
+    modal.classList.add("hidden");
+    modalShow = false;
+  }
+});
 
 function rangeChange() {
   document.querySelector(".btn_count").textContent = (+this.value).toFixed(0);
@@ -43,17 +53,3 @@ const colors = [
 function setBtnColor(num) {
   btn.style.backgroundColor = colors[num];
 }
-
-window.addEventListener("click", (e) => {
-  if (modalShow && !e.target.classList.contains("modal")) {
-    e.stopPropagation();
-    return false;
-  } else {
-    modal.classList.add("hidden");
-    modalShow = false;
-  }
-});
-
-window.ontouchend = (e) => {
-  e.preventDefault();
-};
