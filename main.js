@@ -10,7 +10,7 @@ function rangeChange() {
 }
 
 function yearSelect() {
-  const goodChoice = 1653;
+  const goodChoice = 1693;
   const userChoice = Math.abs(currentValue - goodChoice);
   if (userChoice < 10) {
     setBtnColor(0);
@@ -25,6 +25,8 @@ function yearSelect() {
     setBtnColor(3);
     console.log("else");
   }
+
+  range.classList.add("testSystem");
 }
 
 const colors = [

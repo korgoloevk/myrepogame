@@ -25,7 +25,10 @@ body {
 .game {
     width: 600px;
     margin: 10px;
+    position: relative;
 }
+
+
 
 .question {}
 
@@ -33,6 +36,23 @@ body {
 
 .flag_image img {
     width: 100%;
+}
+
+.modal {
+    position: absolute;
+    /* margin: auto; */
+    width: 90%;
+    height: 20%;
+    background-color: rgba(245, 245, 220, 0.925);
+    border-radius: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5%;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .range_block {}
@@ -76,7 +96,13 @@ input[type="range"]::-webkit-slider-runnable-track {
     background: #d8d8d8;
     border-radius: 1px;
     border: 0px solid #010101;
+
 }
+
+.testSystem::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg, rgba(255, 57, 57, 1) 0%, rgba(205, 196, 51, 1) 80%, rgba(38, 251, 30, 1) 100%) !important;
+}
+
 
 input[type="range"]::-webkit-slider-thumb {
     box-shadow: 1px 1px 1px #000031;
