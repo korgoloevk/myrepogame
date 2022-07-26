@@ -2,20 +2,20 @@ const range = document.querySelector(".range");
 const btn = document.querySelector(".btn");
 let currentValue = +range.value;
 const modal = document.querySelector(".modal");
+const background = document.querySelector(".background");
 let modalShow = false;
 
 range.addEventListener("input", rangeChange);
 btn.addEventListener("click", () => {
-  yearSelect("testSystem");
+  yearSelect("gradient1");
 });
 
 document.addEventListener("click", (e) => {
   if (modalShow && !e.target.classList.contains("modal")) {
-    e.stopPropagation();
-    e.preventDefault();
     return false;
   } else {
     modal.classList.add("hidden");
+    background.classList.add("hidden");
     modalShow = false;
   }
 });
@@ -60,6 +60,7 @@ function setBtnColor(num) {
 
 function modalWork() {
   modal.classList.remove("hidden");
+  background.classList.remove("hidden");
   modalShow = true;
 }
 
