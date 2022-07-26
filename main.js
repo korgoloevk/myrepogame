@@ -4,6 +4,7 @@ let currentValue = +range.value;
 const modal = document.querySelector(".modal");
 const background = document.querySelector(".background");
 let modalShow = false;
+let currentScene = 1;
 
 range.addEventListener("input", rangeChange);
 btn.addEventListener("click", () => {
@@ -69,4 +70,9 @@ function calculateRange(userChoice) {
   const min = range.getAttribute("min");
   const max = range.getAttribute("max");
   const differenct = max - min;
+}
+
+function changeScene(props, currentScene = 1) {
+  range.setAttribute("max", props[currentScene].rangeMax);
+  range.setAttribute("max", props[currentScene].rangeMin);
 }
