@@ -28,22 +28,9 @@ function rangeChange() {
 }
 
 function yearSelect(style) {
-  const goodChoice = 1693;
-  const userChoice = Math.abs(currentValue - goodChoice);
-  //   calculateRange(userChoice);
-  if (userChoice < 5) {
-    setBtnColor(0);
-    console.log("<5");
-  } else if (userChoice < 30) {
-    setBtnColor(1);
-    console.log("<20");
-  } else if (userChoice < 50) {
-    setBtnColor(2);
-    console.log("<30");
-  } else {
-    setBtnColor(3);
-    console.log("else");
-  }
+  const colorArrayNum = calculateRange(currentValue, gameProp);
+  console.log(colorArrayNum);
+  setBtnColor(colorArrayNum);
 
   range.classList.add(style);
   modalWork();
@@ -68,11 +55,21 @@ function modalWork() {
   modalShow = true;
 }
 
-function calculateRange(userChoice) {
-  const goodChoice = 1693;
-  const min = range.getAttribute("min");
-  const max = range.getAttribute("max");
+function calculateRange(userChoice, props) {
+  const goodChoice = props[currentScene].rightСhoice;
+  const min = props[currentScene].rangeMin;
+  const max = props[currentScene].rangeMax;
   const difference = max - min;
+  const value = Math.abs(goodChoice - userChoice);
+  if (value <= difference * 0.1) {
+    return 0;
+  } else if (value <= difference * 0.2) {
+    return 1;
+  } else if (value <= difference * 0.3) {
+    return 2;
+  } else {
+    return 3;
+  }
 }
 
 function changeScene(props, scene = 1) {
@@ -83,5 +80,7 @@ function changeScene(props, scene = 1) {
   btnCount.textContent = range.value;
   range.classList.remove("gradient" + (scene - 1));
 
-  document.querySelector(".flagImage").src = props[scene].imageSrc;
+  // document.querySelector(".flagImage").src = props[scene].imageSrc;
+  document.querySelector(".setImg").innerHTML = "";
+  document.querySelector(".setImg").append(props[scene].image);
 }
