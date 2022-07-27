@@ -5,7 +5,7 @@ let currentValue = +range.value;
 const modal = document.querySelector(".modal");
 const background = document.querySelector(".background");
 let modalShow = false;
-let currentScene = 1;
+let currentScene = 4;
 
 range.addEventListener("input", rangeChange);
 btn.addEventListener("click", () => {
@@ -64,9 +64,9 @@ function calculateRange(userChoice, props) {
   const value = Math.abs(goodChoice - userChoice);
   if (value <= difference * 0.1) {
     return 0;
-  } else if (value <= difference * 0.2) {
-    return 1;
   } else if (value <= difference * 0.3) {
+    return 1;
+  } else if (value <= difference * 0.4) {
     return 2;
   } else {
     return 3;
