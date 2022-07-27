@@ -1,5 +1,6 @@
 const range = document.querySelector(".range");
 const btn = document.querySelector(".btn");
+const btnCount = document.querySelector(".btn_count");
 let currentValue = +range.value;
 const modal = document.querySelector(".modal");
 const background = document.querySelector(".background");
@@ -8,21 +9,21 @@ let currentScene = 1;
 
 range.addEventListener("input", rangeChange);
 btn.addEventListener("click", () => {
-  yearSelect("gradient1");
+  yearSelect("gradient" + currentScene);
 });
 
 document.addEventListener("click", (e) => {
-  if (modalShow && !e.target.classList.contains("modal")) {
-    return false;
-  } else {
+  if (modalShow && e.target.classList.contains("modal")) {
     modal.classList.add("hidden");
     background.classList.add("hidden");
     modalShow = false;
+    currentScene++;
+    changeScene(gameProp, currentScene);
   }
 });
 
 function rangeChange() {
-  document.querySelector(".btn_count").textContent = (+this.value).toFixed(0);
+  btnCount.textContent = (+this.value).toFixed(0);
   currentValue = (+this.value).toFixed(0);
 }
 
@@ -62,6 +63,8 @@ function setBtnColor(num) {
 function modalWork() {
   modal.classList.remove("hidden");
   background.classList.remove("hidden");
+  document.querySelector(".modalMessage").textContent =
+    gameProp[currentScene].message;
   modalShow = true;
 }
 
@@ -69,10 +72,16 @@ function calculateRange(userChoice) {
   const goodChoice = 1693;
   const min = range.getAttribute("min");
   const max = range.getAttribute("max");
-  const differenct = max - min;
+  const difference = max - min;
 }
 
-function changeScene(props, currentScene = 1) {
-  range.setAttribute("max", props[currentScene].rangeMax);
-  range.setAttribute("max", props[currentScene].rangeMin);
+function changeScene(props, scene = 1) {
+  range.setAttribute("max", props[scene].rangeMax);
+  range.setAttribute("min", props[scene].rangeMin);
+  range.value =
+    (props[scene].rangeMax - props[scene].rangeMin) / 2 + props[scene].rangeMin;
+  btnCount.textContent = range.value;
+  range.classList.remove("gradient" + (scene - 1));
+
+  document.querySelector(".flagImage").src = props[scene].imageSrc;
 }

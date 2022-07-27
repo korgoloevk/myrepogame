@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;700&display=swap');
 
+:root {
+    --bg-color: #d8d8d8;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -26,7 +30,7 @@ body {
     height: 100%;
     z-index: 10;
     overflow: hidden;
-    background-color: rgba(80, 80, 80, 0.719);
+    background-color: rgba(80, 80, 80, 0.319);
 }
 
 .wrapper {
@@ -75,11 +79,12 @@ body {
     align-items: center;
     text-align: center;
     z-index: 11;
+    padding: 20px 10px 10px 10px;
 }
 
 .close_btn {
     top: 5px;
-    right: 5px;
+    right: 10px;
     position: absolute;
     pointer-events: none;
 }
@@ -131,12 +136,6 @@ input[type="range"]::-webkit-slider-runnable-track {
     border: 0px solid #010101;
 
 }
-
-.gradient1::-webkit-slider-runnable-track {
-    background: rgb(255, 57, 57) !important;
-    background: linear-gradient(90deg, rgba(255, 57, 57, 1) 0%, rgba(205, 196, 51, 1) 84%, rgba(38, 251, 30, 1) 91%, rgba(205, 196, 51, 1) 97%) !important;
-}
-
 
 input[type="range"]::-webkit-slider-thumb {
     box-shadow: 1px 1px 1px #000031;
@@ -254,4 +253,45 @@ input[type="range"]:focus::-ms-fill-upper {
         font-size: 4.9vw;
     }
 
+}
+
+
+.gradient1::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(255, 57, 57, 1) 0%, rgba(205, 196, 51, 1) 84%, rgba(38, 251, 30, 1) 91%, rgba(205, 196, 51, 1) 97%) !important;
+}
+
+.gradient2::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(205, 196, 51, 1) 14%, rgba(38, 251, 30, 1) 22%, rgba(205, 196, 51, 1) 29%, rgba(255, 57, 57, 1) 100%) !important;
+}
+
+.gradient3::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(255, 57, 57, 1) 0%, rgba(205, 196, 51, 1) 51%, rgba(38, 251, 30, 1) 57%, rgba(205, 196, 51, 1) 65%, rgba(255, 57, 57, 1) 100%) !important;
+}
+
+.gradient4::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(205, 196, 51, 1) 23%, rgba(38, 251, 30, 1) 27%, rgba(205, 196, 51, 1) 35%, rgba(255, 57, 57, 1) 100%) !important;
+}
+
+.gradient5::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(205, 196, 51, 1) 15%, rgba(38, 251, 30, 1) 20%, rgba(205, 196, 51, 1) 26%, rgba(255, 57, 57, 1) 100%) !important;
+}
+
+.gradient6::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(205, 196, 51, 1) 1%, rgba(38, 251, 30, 1) 4%, rgba(205, 196, 51, 1) 8%, rgba(255, 57, 57, 1) 100%) !important;
+}
+
+.gradient7::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(205, 196, 51, 1) 6%, rgba(38, 251, 30, 1) 12%, rgba(205, 196, 51, 1) 20%, rgba(255, 57, 57, 1) 100%) !important;
+}
+
+.gradient8::-webkit-slider-runnable-track {
+    background: var(--bg-color) !important;
+    background: linear-gradient(90deg, rgba(38, 251, 30, 1) 0%, rgba(205, 196, 51, 1) 10%, rgba(255, 57, 57, 1) 100%) !important;
 }
