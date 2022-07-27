@@ -19,6 +19,7 @@ document.addEventListener("click", (e) => {
     modalShow = false;
     currentScene++;
     changeScene(gameProp, currentScene);
+    btn.style.backgroundColor = "rgba(80, 80, 80, 0.719)";
   }
 });
 
