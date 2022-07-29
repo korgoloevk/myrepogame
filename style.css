@@ -17,7 +17,7 @@ body {
     background-color: rgb(201, 201, 201);
     background-image: url('img/background.jpg');
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     overflow: hidden;
     font-family: "Rubik Mono One";
 }
