@@ -5,7 +5,7 @@ let currentValue = +range.value;
 const modal = document.querySelector(".modal");
 const background = document.querySelector(".background");
 let modalShow = false;
-let currentScene = 4;
+let currentScene = 1;
 
 range.addEventListener("input", rangeChange);
 btn.addEventListener("click", () => {
@@ -13,7 +13,12 @@ btn.addEventListener("click", () => {
 });
 
 document.addEventListener("click", (e) => {
-  if (modalShow && e.target.classList.contains("modal")) {
+  const classList = e.target.classList;
+  const clickModal =
+    classList.contains("close_btn") ||
+    classList.contains("modalMessage") ||
+    classList.contains("modal");
+  if (modalShow && clickModal) {
     modal.classList.add("hidden");
     background.classList.add("hidden");
     modalShow = false;
