@@ -8,9 +8,12 @@ let modalShow = false;
 let currentScene = 1;
 
 range.addEventListener("input", rangeChange);
+
 btn.addEventListener("click", () => {
   yearSelect("gradient" + currentScene);
 });
+
+//закрываем модальное окно при клике 
 
 document.addEventListener("click", (e) => {
   const classList = e.target.classList;
@@ -28,10 +31,14 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//устанавливаем значение в кнопку
+
 function rangeChange() {
   btnCount.textContent = (+this.value).toFixed(0);
   currentValue = (+this.value).toFixed(0);
 }
+
+//устанавливаем цвет кнопки, градиент слайдерренжа, запускаем модалку
 
 function yearSelect(style) {
   const colorArrayNum = calculateRange(currentValue, gameProp);
@@ -42,6 +49,8 @@ function yearSelect(style) {
   modalWork();
 }
 
+//цвета для кнопку
+
 const colors = [
   "rgba(78, 189, 74, 0.719)",
   "rgba(177, 189, 74, 0.719)",
@@ -49,9 +58,13 @@ const colors = [
   "rgba(189, 74, 74, 0.733)",
 ];
 
+//устанавливаем цвем кнопки
+
 function setBtnColor(num) {
   btn.style.backgroundColor = colors[num];
 }
+
+//работа модалки
 
 function modalWork() {
   modal.classList.remove("hidden");
@@ -60,6 +73,8 @@ function modalWork() {
     gameProp[currentScene].message;
   modalShow = true;
 }
+
+//на основе выбранного года вычисляем близость к верному ответу и на его основе выдаем значение от наиболее близкого -- 0 до наиболее дальнего -- 4
 
 function calculateRange(userChoice, props) {
   const goodChoice = props[currentScene].rightСhoice;
@@ -78,6 +93,8 @@ function calculateRange(userChoice, props) {
   }
 }
 
+//меняем вопросы  
+
 function changeScene(props, scene = 1) {
   range.setAttribute("max", props[scene].rangeMax);
   range.setAttribute("min", props[scene].rangeMin);
@@ -90,3 +107,6 @@ function changeScene(props, scene = 1) {
   document.querySelector(".setImg").innerHTML = "";
   document.querySelector(".setImg").append(props[scene].image);
 }
+
+
+//собираем текущую информацию для отправки в базу
