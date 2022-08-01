@@ -6,11 +6,13 @@ const modal = document.querySelector(".modal");
 const background = document.querySelector(".background");
 let modalShow = false;
 let currentScene = 1;
+let currentFlagHeight = 8;
 
 range.addEventListener("input", rangeChange);
 
 btn.addEventListener("click", () => {
   yearSelect("gradient" + currentScene);
+  changeFlagHeight();
 });
 
 //закрываем модальное окно при клике
@@ -114,10 +116,13 @@ function setFlagSize() {
   const game = document.querySelector(".game");
   const question = document.querySelector(".question");
   flag.style.height = game.offsetHeight - question.clientHeight + "px";
-
-  console.log("work");
 }
 
 setFlagSize();
 
 window.addEventListener("resize", setFlagSize);
+
+function changeFlagHeight() {
+  document.querySelector(".flag").style.bottom = currentFlagHeight + 10 + "%";
+  currentFlagHeight += 11;
+}

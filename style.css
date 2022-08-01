@@ -52,18 +52,24 @@ body {
 
 .flagBlock {
     height: 100%;
-    width: 20px;
-    background-color: rgb(136, 136, 136);
+    width: 8px;
+    background-color: rgba(136, 136, 136, 0.8);
     position: relative;
     align-self: flex-end;
     margin-left: 20px;
+    border-radius: 10px 10px 0px 0px;
 }
 
-.flagshtok {}
+
+
 
 .flag {
     width: 60px;
     height: 40px;
+    position: absolute;
+    bottom: 8%;
+    transition-property: bottom;
+    transition-duration: 1s;
 }
 
 .white {
