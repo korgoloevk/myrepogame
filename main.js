@@ -13,23 +13,9 @@ btn.addEventListener("click", () => {
   yearSelect("gradient" + currentScene);
 });
 
-//закрываем модальное окно при клике 
+//закрываем модальное окно при клике
 
-document.addEventListener("click", (e) => {
-  const classList = e.target.classList;
-  const clickModal =
-    classList.contains("close_btn") ||
-    classList.contains("modalMessage") ||
-    classList.contains("modal");
-  if (modalShow && clickModal) {
-    modal.classList.add("hidden");
-    background.classList.add("hidden");
-    modalShow = false;
-    currentScene++;
-    changeScene(gameProp, currentScene);
-    btn.style.backgroundColor = "rgba(80, 80, 80, 0.719)";
-  }
-});
+modal.addEventListener("click", modals);
 
 //устанавливаем значение в кнопку
 
@@ -42,9 +28,7 @@ function rangeChange() {
 
 function yearSelect(style) {
   const colorArrayNum = calculateRange(currentValue, gameProp);
-  console.log(colorArrayNum);
   setBtnColor(colorArrayNum);
-
   range.classList.add(style);
   modalWork();
 }
@@ -69,8 +53,10 @@ function setBtnColor(num) {
 function modalWork() {
   modal.classList.remove("hidden");
   background.classList.remove("hidden");
-  document.querySelector(".modalMessage").textContent =
+  document.querySelector(".modalmsg").textContent =
     gameProp[currentScene].message;
+  document.querySelector(".answerModal").textContent =
+    gameProp[currentScene].rightСhoice;
   modalShow = true;
 }
 
@@ -93,7 +79,7 @@ function calculateRange(userChoice, props) {
   }
 }
 
-//меняем вопросы  
+//меняем вопросы
 
 function changeScene(props, scene = 1) {
   range.setAttribute("max", props[scene].rangeMax);
@@ -101,6 +87,7 @@ function changeScene(props, scene = 1) {
   range.value =
     (props[scene].rangeMax - props[scene].rangeMin) / 2 + props[scene].rangeMin;
   btnCount.textContent = range.value;
+  currentValue = +range.value;
   range.classList.remove("gradient" + (scene - 1));
 
   // document.querySelector(".flagImage").src = props[scene].imageSrc;
@@ -108,5 +95,29 @@ function changeScene(props, scene = 1) {
   document.querySelector(".setImg").append(props[scene].image);
 }
 
-
 //собираем текущую информацию для отправки в базу
+
+//поведение модального окна
+function modals() {
+  if (this.classList.contains("modal") && modalShow) {
+    this.classList.add("hidden");
+    background.classList.add("hidden");
+    modalShow = false;
+    currentScene++;
+    changeScene(gameProp, currentScene);
+    btn.style.backgroundColor = "rgba(80, 80, 80, 0.719)";
+  }
+}
+
+function setFlagSize() {
+  const flag = document.querySelector(".flagBlock");
+  const game = document.querySelector(".game");
+  const question = document.querySelector(".question");
+  flag.style.height = game.offsetHeight - question.clientHeight + "px";
+
+  console.log("work");
+}
+
+setFlagSize();
+
+window.addEventListener("resize", setFlagSize);
