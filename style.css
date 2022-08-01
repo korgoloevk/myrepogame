@@ -295,7 +295,7 @@ input[type="range"]:focus::-ms-fill-upper {
 
 
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 700px) {
     .question {
         font-size: 5vw;
         margin-bottom: 5px;
@@ -304,6 +304,7 @@ input[type="range"]:focus::-ms-fill-upper {
     body {
         background-color: rgb(201, 201, 201);
         background-image: url('img/backgroundvertical.jpg');
+        background-size: auto;
     }
 }
 
