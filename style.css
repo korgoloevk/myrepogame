@@ -40,6 +40,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .game {
@@ -48,6 +49,8 @@ body {
     margin: 10px;
     position: relative;
     display: flex;
+    /* border: 1px solid black; */
+
 }
 
 .flagBlock {
@@ -56,7 +59,7 @@ body {
     background-color: rgba(136, 136, 136, 0.8);
     position: relative;
     align-self: flex-end;
-    margin-left: 20px;
+    margin: 0px 55px 0px 20px;
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -310,7 +313,7 @@ input[type="range"]:focus::-ms-fill-upper {
 
 @media screen and (max-width: 440px) {
     .question {
-        font-size: 4.8vw;
+        font-size: 26px;
     }
 
 }
