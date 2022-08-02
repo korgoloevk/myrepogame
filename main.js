@@ -96,7 +96,7 @@ function changeScene(props, scene = 1) {
   // document.querySelector(".flagImage").src = props[scene].imageSrc;
   document.querySelector(".setImg").innerHTML = "";
   document.querySelector(".setImg").append(props[scene].image);
-  setFlagSize();
+  setInterval(setFlagSize, 10);
 }
 
 //собираем текущую информацию для отправки в базу
@@ -113,20 +113,20 @@ function modals() {
   }
 }
 
-// function setFlagSize() {
-//   const flag = document.querySelector(".flagBlock");
-//   const game = document.querySelector(".game");
-//   const question = document.querySelector(".question");
-//   flag.style.height = game.offsetHeight - question.clientHeight + "px";
-// }
-
 function setFlagSize() {
   const flag = document.querySelector(".flagBlock");
-  const flagImage = document.querySelector(".setImg");
+  const game = document.querySelector(".game");
   const question = document.querySelector(".question");
-  flag.style.height = flagImage.offsetHeight + "px";
-  modal.style.width = document.querySelector(".setImg").offsetWidth + "px";
+  flag.style.height = game.offsetHeight - question.clientHeight + "px";
 }
+
+// function setFlagSize() {
+//   const flag = document.querySelector(".flagBlock");
+//   const flagImage = document.querySelector(".setImg");
+//   const question = document.querySelector(".question");
+//   flag.style.height = flagImage.offsetHeight + "px";
+//   modal.style.width = document.querySelector(".setImg").offsetWidth + "px";
+// }
 
 setFlagSize();
 
