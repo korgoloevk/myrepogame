@@ -53,6 +53,7 @@ function setBtnColor(num) {
 //работа модалки
 
 function modalWork() {
+  modal.style.width = document.querySelector(".setImg").offsetWidth + "px";
   modal.classList.remove("hidden");
   background.classList.remove("hidden");
   document.querySelector(".modalmsg").textContent =
@@ -95,6 +96,7 @@ function changeScene(props, scene = 1) {
   // document.querySelector(".flagImage").src = props[scene].imageSrc;
   document.querySelector(".setImg").innerHTML = "";
   document.querySelector(".setImg").append(props[scene].image);
+  setFlagSize();
 }
 
 //собираем текущую информацию для отправки в базу
@@ -111,11 +113,19 @@ function modals() {
   }
 }
 
+// function setFlagSize() {
+//   const flag = document.querySelector(".flagBlock");
+//   const game = document.querySelector(".game");
+//   const question = document.querySelector(".question");
+//   flag.style.height = game.offsetHeight - question.clientHeight + "px";
+// }
+
 function setFlagSize() {
   const flag = document.querySelector(".flagBlock");
-  const game = document.querySelector(".game");
+  const flagImage = document.querySelector(".setImg");
   const question = document.querySelector(".question");
-  flag.style.height = game.offsetHeight - question.clientHeight + "px";
+  flag.style.height = flagImage.offsetHeight + "px";
+  modal.style.width = document.querySelector(".setImg").offsetWidth + "px";
 }
 
 setFlagSize();

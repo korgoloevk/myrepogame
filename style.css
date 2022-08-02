@@ -99,6 +99,7 @@ body {
 
 .flag_image {
     position: relative;
+    display: flex;
 }
 
 .flag_image img {
@@ -117,7 +118,7 @@ body {
     background-color: rgba(202, 202, 202, 0.932);
     /* border-radius: 7px; */
     bottom: 0;
-    right: 0;
+    left: 0;
     font-size: 18px;
     display: flex;
     justify-content: center;
@@ -125,7 +126,10 @@ body {
     text-align: center;
     z-index: 11;
     padding: 20px 10px 20px 10px;
+    justify-self: flex-start;
 }
+
+
 
 .answerModal {
     font-weight: 600;
@@ -309,11 +313,15 @@ input[type="range"]:focus::-ms-fill-upper {
         background-image: url('img/backgroundvertical.jpg');
         background-size: auto;
     }
+
+    .modal {
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 440px) {
     .question {
-        font-size: 26px;
+        font-size: 20px;
     }
 
 }
