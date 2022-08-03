@@ -85,6 +85,7 @@ function createImages(obj) {
     const image = new Image();
     image.src = obj[key].imageSrc;
     obj[key].image = image;
+    image.classList.add("flagImage");
   }
 }
 

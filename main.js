@@ -53,9 +53,9 @@ function setBtnColor(num) {
 //работа модалки
 
 function modalWork() {
-  modal.style.width = document.querySelector(".setImg").offsetWidth + "px";
   modal.classList.remove("hidden");
   background.classList.remove("hidden");
+
   document.querySelector(".modalmsg").textContent =
     gameProp[currentScene].message;
   document.querySelector(".answerModal").textContent =
@@ -117,7 +117,7 @@ function setFlagSize() {
   const flag = document.querySelector(".flagBlock");
   const game = document.querySelector(".game");
   const question = document.querySelector(".question");
-  flag.style.height = game.offsetHeight - question.clientHeight + "px";
+  flag.style.height = game.offsetHeight - question.offsetHeight - 10 + "px";
 }
 
 // function setFlagSize() {

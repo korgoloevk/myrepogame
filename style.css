@@ -100,6 +100,20 @@ body {
 
 }
 
+/* .cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.setImg {
+    height: 400px;
+}
+
+.flagImage {
+    height: 400px;
+}
+
 .flagBlock {
     /* height: 100%; */
     width: 8px;
@@ -148,6 +162,8 @@ body {
 .flag_image {
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flag_image img {
@@ -160,10 +176,11 @@ body {
     /* margin: auto; */
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 500;
-    width: 100%;
-    height: 100%;
+    width: 101%;
+    height: 101%;
     min-height: 20%;
     background-color: rgba(202, 202, 202, 0.932);
+    /* background-color: #fff; */
     /* border-radius: 7px; */
     bottom: 0;
     left: 0;
@@ -177,10 +194,20 @@ body {
     justify-self: flex-start;
 }
 
+.modalMessage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .answerModal {
     font-weight: 600;
     padding: 30px;
+}
+
+.modalmsg {
+    justify-self: flex-start;
 }
 
 .close_btn {
@@ -351,7 +378,7 @@ input[type="range"]:focus::-ms-fill-upper {
 
 @media screen and (max-width: 700px) {
     .question {
-        font-size: 5vw;
+        font-size: 15px;
         margin-bottom: 5px;
     }
 
@@ -364,25 +391,46 @@ input[type="range"]:focus::-ms-fill-upper {
     .modal {
         font-size: 16px;
     }
+
+    .setImg {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flagImage {
+        height: 200px;
+    }
+
+    .modalmsg {
+        font-size: 14px;
+    }
+
+    .answerModal {
+        font-weight: 600;
+        padding: 5px 30px 15px 30px;
+    }
+
 }
 
 @media screen and (max-width: 440px) {
     .question {
-        font-size: 20px;
+        font-size: 15px;
     }
 
 }
 
 @media screen and (max-width: 310px) {
     .question {
-        font-size: 4.8vw;
+        font-size: 15px;
     }
 
 }
 
 @media screen and (max-width: 300px) {
     .question {
-        font-size: 4.6vw;
+        font-size: 15px;
     }
 
 }
