@@ -414,27 +414,6 @@ input[type="range"]:focus::-ms-fill-upper {
 
 }
 
-@media screen and (max-width: 440px) {
-    .question {
-        font-size: 15px;
-    }
-
-}
-
-@media screen and (max-width: 310px) {
-    .question {
-        font-size: 15px;
-    }
-
-}
-
-@media screen and (max-width: 300px) {
-    .question {
-        font-size: 15px;
-    }
-
-}
-
 @media screen and (max-width: 750px) {
     .header {
         /* display: none; */
@@ -478,6 +457,47 @@ input[type="range"]:focus::-ms-fill-upper {
     .header ul li {
         padding: 15px;
 
+    }
+}
+
+@media screen and (max-width: 405px) {
+
+    .modalmsg {
+        font-size: 10px;
+    }
+
+    .setImg {
+        /* height: 150px; */
+        width: 100%;
+        height: auto;
+    }
+
+    .flagImage {
+        /* height: 150px; */
+        width: 100%;
+        height: auto;
+    }
+
+    .question {
+        font-size: 11px;
+    }
+
+    .btn {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: rgba(80, 80, 80, 0.719);
+    }
+
+    .flag {
+        width: 30px;
+        height: 15px;
+        position: absolute;
+        bottom: 8%;
+        transition-property: bottom;
+        transition-duration: 1s;
     }
 }
 
