@@ -7,10 +7,19 @@ const background = document.querySelector(".background");
 let modalShow = false;
 let currentScene = 1;
 let currentFlagHeight = 8;
+const info = {
+  answers: {},
+  counts: {},
+};
 
 range.addEventListener("input", rangeChange);
 
 btn.addEventListener("click", () => {
+  if (currentScene >= 9) {
+    // console.log(getResult(info));
+    return false;
+  }
+  getInfo();
   yearSelect("gradient" + currentScene);
   changeFlagHeight();
 });
@@ -101,8 +110,20 @@ function changeScene(props, scene = 1) {
 
 //собираем текущую информацию для отправки в базу
 
+function getInfo() {
+  info.answers[currentScene] = +currentValue;
+  const count = calculateRange(currentValue, gameProp);
+  info.counts[currentScene] = count;
+  // console.log(info);
+}
+
 //поведение модального окна
 function modals() {
+  console.log(currentScene);
+  if (currentScene >= 8) {
+    console.log(getResult(info));
+    return false;
+  }
   if (this.classList.contains("modal") && modalShow) {
     this.classList.add("hidden");
     background.classList.add("hidden");
@@ -135,4 +156,12 @@ window.addEventListener("resize", setFlagSize);
 function changeFlagHeight() {
   document.querySelector(".flag").style.bottom = currentFlagHeight + 10 + "%";
   currentFlagHeight += 11;
+}
+
+function getResult(obj) {
+  const countsArray = Object.values(obj.counts);
+  const countsResult = countsArray.reduce((a, b) => {
+    return a + b;
+  }, 0);
+  return countsResult;
 }
