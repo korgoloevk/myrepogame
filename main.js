@@ -16,7 +16,6 @@ range.addEventListener("input", rangeChange);
 
 btn.addEventListener("click", () => {
   if (currentScene >= 9) {
-    // console.log(getResult(info));
     return false;
   }
   getInfo();
@@ -111,7 +110,9 @@ function changeScene(props, scene = 1) {
 //собираем текущую информацию для отправки в базу
 
 function getInfo() {
-  info.answers[currentScene] = +currentValue;
+  info.answers[currentScene] = Math.abs(
+    +currentValue - gameProp[currentScene].rightСhoice
+  );
   const count = calculateRange(currentValue, gameProp);
   info.counts[currentScene] = count;
   // console.log(info);
@@ -119,9 +120,8 @@ function getInfo() {
 
 //поведение модального окна
 function modals() {
-  console.log(currentScene);
   if (currentScene >= 8) {
-    console.log(getResult(info));
+    getInfoOnServer(info);
     return false;
   }
   if (this.classList.contains("modal") && modalShow) {
@@ -160,8 +160,37 @@ function changeFlagHeight() {
 
 function getResult(obj) {
   const countsArray = Object.values(obj.counts);
+  const answersArray = Object.values(obj.answers);
   const countsResult = countsArray.reduce((a, b) => {
     return a + b;
   }, 0);
-  return countsResult;
+  const answersResult = answersArray.reduce((a, b) => {
+    return a + b;
+  }, 0);
+  // return { counts: countsResult, answers: answersResult };
+  if (countsResult > 0) {
+    return "" + countsResult + "" + answersResult;
+  } else {
+    return "" + answersResult;
+  }
 }
+
+function getInfoOnServer(info) {
+  const counts = getResult(info);
+  const data = new FormData();
+  data.set("count", counts);
+
+  fetch("handler.php", {
+    method: "POST",
+    body: data,
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .then((data) => {
+      const res = data.count.toFixed(2);
+      console.log(`Ты справился лучше, чем ${res}% участников`);
+    });
+}
+
+
